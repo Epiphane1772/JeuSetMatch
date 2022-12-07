@@ -47,7 +47,7 @@ final class GameTestCase: XCTestCase {
         XCTAssert(game.scores[.two]! == 0)
     }
 
-    func testGivenScoreIsForty_WhenIncrementingPlayer1Score_TenGameIsOverAndWonByPlayerOne() {
+    func testGivenScoreIs40_WhenIncrementingPlayer1Score_ThenGameIsOverAndPlayerOneWins() {
         setPlayerOneScore(40)
         game.incrementScore(forPlayer: .one)
         XCTAssertEqual(game.winner, .one)

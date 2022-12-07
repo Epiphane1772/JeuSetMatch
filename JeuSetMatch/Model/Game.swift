@@ -30,10 +30,9 @@ class Game {
         playerWithAdvantage = player
     }
 
-    // MARK: - Methods
     func incrementScore(forPlayer player: Player) {
-        if let score = scores[player], let scoreIndex = Game.points.index(of: score) {
-            if score < 40 {
+       if let score = scores[player], let scoreIndex = Game.points.index(of: score) {
+            if scores[player]! < 40 {
                 scores[player] = Game.points[scoreIndex + 1]
             } else if equality {
                 giveAdvantage(toPlayer: player)
@@ -41,10 +40,30 @@ class Game {
                 if actualPlayerWithAdvantage == player {
                     end(withWinner: player)
                 } else {
-                    playerWithAdvantage = nil                }
+                    playerWithAdvantage = nil
+                }
+            } else {
+                end(withWinner: player)
             }
         }
     }
+    // MARK: - Methods
+//    func incrementScore(forPlayer player: Player) {
+//        if let score = scores[player], let scoreIndex = Game.points.index(of: score) {
+//            if score < 40 {
+//                scores[player] = Game.points[scoreIndex + 1]
+//            } else if equality {
+//                giveAdvantage(toPlayer: player)
+//            } else if let actualPlayerWithAdvantage = playerWithAdvantage {
+//                if actualPlayerWithAdvantage == player {
+//                    end(withWinner: player)
+//                } else {
+//                    playerWithAdvantage = nil                }
+//                }
+//            } else {
+//                end(withWinner: player)
+//        }
+//    }
 
     fileprivate func end(withWinner winner: Player) {
         self.winner = winner
